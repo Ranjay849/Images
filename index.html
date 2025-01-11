@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <title>Ranjay's Portfolio</title>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+        width: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXVuUHAe40NUT177vyvGIpZ4Su188G8GwAMA&s);
+        background-size: cover;
+      }
+
+      .overlay {
+        background: linear-gradient(
+          to bottom right,
+          rgba(47, 43, 26, 0.9),
+          rgba(5, 30, 46, 0.85),
+          rgba(25, 43, 34, 0.8)
+        );
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .nav {
+        padding: 15px 0;
+        width: 100%;
+        border-bottom: 1px solid gray;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+      }
+
+      .nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 50px;
+        margin-right: 50px;
+      }
+
+      .nav a {
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        font-weight: bold;
+        font-family: "Times New Roman", Times, serif;
+        padding: 8px;
+      }
+
+      .nav a:hover {
+        background-color: grey;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 10px;
+      }
+
+      .myName {
+        margin-right: 650px;
+        font-family: "Lobster", cursive;
+        color: silver;
+        animation: colorChange 2s infinite;
+        font-size: 30px;
+      }
+
+      @keyframes colorChange {
+        0% {
+          color: #ff5733;
+        }
+        25% {
+          color: #33ff57;
+        }
+        50% {
+          color: #3357ff;
+        }
+        75% {
+          color: #ff33a8;
+        }
+        100% {
+          color: #ffc300;
+        }
+      }
+
+      #home {
+        margin-top: 30px;
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 15px;
+        color: #ddd;
+      }
+
+      .home-image {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        border: 3px solid #ccc;
+        object-fit: cover;
+      }
+
+      .home-greet {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        color: whitesmoke;
+      }
+
+      .home-description {
+        font-weight: 600;
+        font-family: cursive;
+        color: #ccc;
+      }
+
+      .gin-btn {
+        border: none;
+        padding: 10px;
+        font-size: 17px;
+        border-radius: 10px;
+        background-color: #2196f3;
+      }
+
+      .gin-btn a {
+        text-decoration: none;
+        color: white;
+        font-family: serif;
+      }
+
+      .gin-btn:hover {
+        cursor: pointer;
+        background-color: #1976d2;
+      }
+
+      #about-me {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        margin: 50px;
+        min-height: 380px;
+        border-radius: 10px;
+      }
+
+      #about-me h2 {
+        border-bottom: 1px solid gray;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        color: white;
+        font-weight: 900;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 40px;
+      }
+
+      #about-me p {
+        text-align: center;
+        color: white;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        font-size: 20px;
+      }
+
+      #skills {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+        margin: 50px;
+        border-radius: 10px;
+        min-height: 280px;
+      }
+
+      #skills .skills-container {
+        display: flex;
+        gap: 100px;
+        justify-content: center;
+      }
+
+      .skills-card {
+        background-color: #fff;
+        width: 320px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        min-height: 180px;
+      }
+
+      #skills h2 {
+        text-align: center;
+        border-bottom: 1px solid gray;
+        margin-bottom: 20px;
+        margin-top: -1px;
+        color: white;
+        font-weight: 900;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 40px;
+      }
+
+      #skills h3 {
+        text-align: center;
+        margin-top: 10px;
+        border-bottom: 2px solid goldenrod;
+        padding: 5px;
+      }
+
+      #projects {
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+        margin: 50px;
+      }
+
+      #projects h2 {
+        border-bottom: 1px solid gray;
+        padding-bottom: 5px;
+        text-align: center;
+        color: white;
+        font-weight: 900;
+        font-size: 40px;
+        margin-top: -5px;
+        margin-bottom: -60px;
+      }
+
+      .project-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        padding: 20px;
+      }
+
+      .for-image {
+        width: 250px;
+        height: 250px;
+        background-color: #fff;
+        margin-top: 50px;
+        font-size: 12.5px;
+        border-radius: 10px;
+      }
+
+      .project-image {
+        width: 250px;
+        height: 190px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .view-btn {
+        border: none;
+        padding: 10px;
+        width: 230px;
+        margin-left: 9px;
+        margin-top: 5px;
+        font-size: 17px;
+        border-radius: 20px;
+        background-color: #2196f3;
+      }
+
+      .view-btn a {
+        text-decoration: none;
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+      }
+
+      .view-btn:hover {
+        cursor: pointer;
+        background-color: #1976d2;
+      }
+
+      #contact {
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        min-height: 350px;
+        margin: 50px;
+      }
+
+      #contact h2 {
+        border-bottom: 1px solid gray;
+        margin-bottom: 20px;
+        text-align: center;
+        color: white;
+        font-weight: 900;
+        font-size: 40px;
+        margin-top: -5px;
+      }
+
+      #contact h3 {
+        text-align: center;
+        color: #ddd;
+        font-weight: 900;
+        font-size: 30px;
+        margin-bottom: 150px;
+      }
+
+      #contact .contact-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #contact .contact-image img {
+        border: 3px solid gray;
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        margin-top: -130px;
+        margin-bottom: 30px;
+      }
+
+      .socialMedia-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+        font-size: 35px;
+        padding-bottom: 20px;
+      }
+
+      .socialMedia-icon i {
+        color: #ccc;
+        padding: 5px;
+      }
+
+      .socialMedia-icon i:hover {
+        color: #007bff;
+        border-radius: 5px;
+      }
+
+      #foot {
+        background: #2c3e50;
+        background-image: radial-gradient(circle, #222 1px, transparent 1px);
+        background-size: 4px 4px;
+        border-top: 1px solid #1a1a1a;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 60px;
+      }
+
+      #foot .foot-image {
+        border-radius: 100%;
+        width: 40px;
+        height: 40px;
+        border: 3px solid #ccc;
+        object-fit: cover;
+      }
+
+      #foot p {
+        color: white;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .nav ul {
+          flex-direction: column;
+          gap: 20px;
+          margin-right: 0;
+        }
+
+        .myName {
+          margin-right: 0;
+          font-size: 25px;
+        }
+
+        .gin-btn {
+          font-size: 15px;
+          padding: 8px;
+        }
+
+        #home {
+          font-size: 13px;
+        }
+
+        #skills {
+          min-height: 670px;
+          padding: 20px;
+        }
+
+        .skills-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        .skills-card {
+          width: 100%;
+          margin-bottom: -70px;
+        }
+
+        #project {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .project-card {
+          gap: 1px;
+          flex-direction: column;
+        }
+
+        .for-image img {
+          margin: 0;
+          padding: 0;
+        }
+
+        #contact .socialMedia-icon i {
+          padding: 15px;
+        }
+
+        #contact .contact-image img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav ul {
+          flex-direction: column;
+          gap: 15px;
+          margin-right: 0;
+        }
+
+        .myName {
+          font-size: 20px;
+        }
+
+        .gin-btn {
+          font-size: 14px;
+          padding: 7px;
+        }
+
+        #home {
+          font-size: 12px;
+        }
+
+        #skills {
+          min-height: 680px;
+          padding: 0;
+        }
+
+        .skills-container {
+          display: flex;
+          padding: 20px;
+          margin: 30px;
+          margin-top: -30px;
+        }
+
+        #project {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .project-card {
+          gap: 1px;
+          height: 100%;
+          flex-direction: column;
+        }
+
+        .for-image img {
+          width: 250px;
+          margin: 0;
+          padding: 0;
+        }
+
+        #contact .contact-image img {
+          width: 100px;
+          height: 100px;
+        }
+
+        .socialMedia-icon i {
+          margin: -15px;
+        }
+
+        #foot p {
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 412px) {
+        .nav ul {
+          flex-direction: column;
+          gap: 15px;
+          margin-right: 0;
+        }
+
+        .myName {
+          font-size: 20px;
+        }
+
+        .gin-btn {
+          font-size: 14px;
+          padding: 7px;
+        }
+
+        #home {
+          font-size: 12px;
+        }
+
+        #skills {
+          min-height: 790px;
+          padding: 0;
+        }
+
+        .skills-container {
+          display: flex;
+          padding: 20px;
+          margin: 30px;
+          margin-top: -30px;
+        }
+
+        #project {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .project-card {
+          gap: 1px;
+          height: 100%;
+          flex-direction: column;
+        }
+
+        .for-image img {
+          width: 250px;
+          margin: 0;
+          padding: 0;
+        }
+
+        #contact .contact-image img {
+          width: 100px;
+          height: 100px;
+        }
+
+        .socialMedia-icon i {
+          margin: -25px;
+        }
+
+        #foot p {
+          font-size: 16px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .nav ul {
+          flex-direction: column;
+          gap: 15px;
+          margin-right: 0;
+        }
+
+        .myName {
+          font-size: 20px;
+        }
+
+        .gin-btn {
+          font-size: 14px;
+          padding: 7px;
+        }
+
+        #home {
+          font-size: 12px;
+        }
+
+        #skills {
+          min-height: 750px;
+          padding: 0;
+        }
+
+        .skills-container {
+          margin-left: -1px;
+          width: 210px;
+        }
+
+        #contact .contact-image img {
+          width: 100px;
+          height: 100px;
+        }
+
+        .socialMedia-icon i {
+          margin: -35px;
+        }
+
+        #foot p {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay"></div>
+
+    <div class="nav">
+      <ul>
+        <li class="myName">~ℝ𝕒𝕟𝕛𝕒𝕪</li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about-me">About Me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <section id="home">
+      <img class="home-image" src="https://github.com/Ranjay849/Images/blob/master/Ranjay.jpg?raw=true" alt="Photo" />
+      <h2 class="home-greet">Welcome to my Portfolio</h2>
+      <p class="home-description">
+        Building my journey as a Full Stack Developer | Learning and Growing
+        Every Day
+      </p>
+      <button class="gin-btn">
+        <a href="mailto:ranjayku745@gmail.com">Get in Touch</a>
+      </button>
+    </section>
+
+    <section id="about-me">
+      <h2>About Me</h2>
+      <p>
+        Hello! 👋 I'm Ranjay, a passionate Full Stack Developer in the making
+        with a strong focus on web development. Currently, I'm pursuing my BCA
+        degree, which is fueling my drive to become a skilled tech professional.
+        I'm excited about the journey I'm on, and my goal is to build dynamic
+        and intuitive web applications that provide real value to users. Every
+        project I undertake challenges me to grow, experiment, and deliver
+        quality results. <br />
+        <br />
+
+        <strong>My Passion 🌱</strong><br />
+        I thrive on solving problems and continuously learning. Whether it's
+        debugging an issue or optimizing a user interface, I approach each task
+        with curiosity and dedication. I believe in building applications that
+        are not only functional but also user-friendly and aesthetically
+        pleasing. <br />
+        <br />
+
+        <strong>What Drives Me 💡</strong> <br />
+        I'm always seeking new opportunities to learn and grow. Whether it's
+        mastering new technologies or taking on new challenges, I enjoy
+        expanding my skill set to stay ahead in this ever-evolving tech world.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skills-card">
+          <h3>Ongoing</h3>
+          ⭐ <strong>Languages: </strong>HTML, CSS, SQL <br />
+          <br />
+          ⭐ <strong>Frameworks & Libraries: </strong> TailwindCSS <br />
+          <br />
+          ⭐ <strong>Tools: </strong> Git & GitHub, VS Code
+        </div>
+
+        <div class="skills-card">
+          <h3>Ongoing</h3>
+          ⭐ <strong>HTML & CSS</strong>: <strong>Level:</strong> Intermediate
+          🏆
+          <br />
+          <br />
+          ⭐ <strong>JavaScript: </strong> <strong>Level:</strong> Beginner 🏆
+          <br />
+          <br />
+          ⭐ <strong>SQL: </strong> <strong>Level:</strong> Intermediate 🏆
+        </div>
+
+        <div class="skills-card">
+          <h3>Ongoing</h3>
+          ⭐ <strong>C: </strong> <strong>Level:</strong> Beginner 🏆 <br />
+          <br />
+          ⭐ <strong>C++: </strong> <strong>Level:</strong> Beginner 🏆<br />
+          <br />
+          ⭐ <strong>DSA: </strong><strong> Level:</strong> Beginner 🏆
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <div class="for-image">
+          <img
+            class="project-image"
+            src="https://github.com/Ranjay849/Images/blob/master/SignUp_Page.png?raw=true"
+            title="SignUp Page"
+            alt="Photo"
+          /><button class="view-btn">
+            <a href="https://ranjayproject01.netlify.app/" target="_blank"
+              >View</a
+            >
+          </button>
+        </div>
+
+        <div class="for-image">
+          <img
+            class="project-image"
+            src="https://github.com/Ranjay849/Images/blob/master/Twitter_Navbar.png?raw=true"
+            title="Twitter Navbar"
+            alt="Photo"
+          /><button class="view-btn">
+            <a href="https://ranjayproject03.netlify.app/" target="_blank"
+              >View</a
+            >
+          </button>
+        </div>
+
+        <div class="for-image">
+          <img
+            class="project-image"
+            src="https://github.com/Ranjay849/Images/blob/master/Slider.jpeg?raw=true"
+            title="A Slider with Four Cards"
+            alt="Photo"
+          /><button class="view-btn">
+            <a href="https://ranjayproject07.netlify.app/" target="_blank"
+              >View</a
+            >
+          </button>
+        </div>
+
+        <div class="for-image">
+          <img
+            class="project-image"
+            src="https://github.com/Ranjay849/Images/blob/master/ProjectCollection.jpeg?raw=true"
+            title="Go to projects section"
+            alt="Photo"
+          /><button class="view-btn"><a href="https://myproject849.netlify.app/" target="_blank">See more projects</a></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <h3>Feel free to contact me!</h3>
+      <div class="contact-image">
+        <img src="https://github.com/Ranjay849/Images/blob/master/Ranjay.jpg?raw=true" alt="Photo" />
+      </div>
+      <div class="socialMedia-icon">
+        <a href="mailto:ranjayku745@gmail.com" target="_blank"
+          ><i class="fa-solid fa-envelope"></i
+        ></a>
+        <a href="https://github.com/ranjay849/" target="_blank"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/ranjay-kumar-3ab566276"
+          target="_blank"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://x.com/ranjay849/" target="_blank"
+          ><i class="fa-brands fa-twitter"></i
+        ></a>
+      </div>
+    </section>
+
+    <footer id="foot">
+      <img class="foot-image" src="https://github.com/Ranjay849/Images/blob/master/Ranjay1.jpg?raw=true" alt="Photo" />
+      <p>© 2025 Ranjay. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
